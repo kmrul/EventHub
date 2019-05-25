@@ -1,6 +1,9 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Lato', sans-serif;
+    /*font-family: 'Montserrat', sans-serif;*/
 }
 
 /* Set padding to keep content from hitting the edges */
