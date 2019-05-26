@@ -1,19 +1,26 @@
-﻿using System.Web.Mvc;
+﻿using EventHub.Models;
+using System.Web.Mvc;
 
 namespace EventHub.Controllers
 {
     public class EventsController : Controller
     {
+        private readonly ApplicationDbContext _context;
 
+        public EventsController()
+        {
+            _context = new ApplicationDbContext();
+        }
 
-        // GET: Events/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
+        [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(FormCollection collection)
         {
             try
