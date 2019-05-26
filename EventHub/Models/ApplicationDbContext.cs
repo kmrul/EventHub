@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace EventHub.Models
 {
@@ -8,6 +9,8 @@ namespace EventHub.Models
             : base("EventHubConString", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Event> Events { get; set; }
 
         public static ApplicationDbContext Create()
         {

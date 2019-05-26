@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201905252114567_InititalModel.Designer.cs">
       <DependentUpon>201905252114567_InititalModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905262233165_AddEventMigration.cs" />
+    <Compile Include="Migrations\201905262233165_AddEventMigration.Designer.cs">
+      <DependentUpon>201905262233165_AddEventMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -269,6 +273,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905252114567_InititalModel.resx">
       <DependentUpon>201905252114567_InititalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905262233165_AddEventMigration.resx">
+      <DependentUpon>201905262233165_AddEventMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
