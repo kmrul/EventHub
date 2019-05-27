@@ -1,6 +1,8 @@
 ﻿using EventHub.Dtos;
 using EventHub.Models;
+using EventHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace EventHub.Controllers
@@ -17,8 +19,11 @@ namespace EventHub.Controllers
         [Authorize]
         public ActionResult Create()
         {
-
-            return View();
+            var viewModel = new EventForViewModel
+            {
+                Categories = _context.Categories.ToList()
+            };
+            return View(viewModel);
         }
 
         [Authorize]
@@ -30,6 +35,7 @@ namespace EventHub.Controllers
             {
                 if (!ModelState.IsValid)
                 {
+                    dto.Categories = _context.Categories.ToList();
                     return RedirectToAction("Create");
                 }
 
