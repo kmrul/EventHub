@@ -11,6 +11,11 @@ namespace EventHub.Dtos
         [Required]
         public string Name { get; set; }
 
+        public byte Category { get; set; }
+
+        [Required]
+        public string Vanue { get; set; }
+
         [Required]
         [FutureDate]
         public string Date { get; set; }
@@ -20,7 +25,7 @@ namespace EventHub.Dtos
         [ValidTime]
         public string Time { get; set; }
 
-        public byte Category { get; set; }
+
 
 
         public IEnumerable<Category> Categories { get; set; }

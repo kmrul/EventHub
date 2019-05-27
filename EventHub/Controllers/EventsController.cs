@@ -1,4 +1,6 @@
-﻿using EventHub.Models;
+﻿using EventHub.Dtos;
+using EventHub.Models;
+using Microsoft.AspNet.Identity;
 using System.Web.Mvc;
 
 namespace EventHub.Controllers
@@ -15,17 +17,33 @@ namespace EventHub.Controllers
         [Authorize]
         public ActionResult Create()
         {
+
             return View();
         }
 
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(EventDto dto)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                    return RedirectToAction("Create");
+                }
+
+                var evnt = new Event
+                {
+                    OrganizerId = User.Identity.GetUserId(),
+                    DateTime = dto.GetDateTime(),
+                    CategoryId = dto.Category,
+                    Vanue = dto.Vanue,
+                    Name = dto.Name
+                };
+
+                _context.Events.Add(evnt);
+                _context.SaveChanges();
 
                 return RedirectToAction("Index");
             }
