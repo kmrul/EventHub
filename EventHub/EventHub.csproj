@@ -193,6 +193,10 @@
     <Compile Include="Migrations\201906021931370_PopulateCategoriesTable.Designer.cs">
       <DependentUpon>201906021931370_PopulateCategoriesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906021951361_AddForeignKeyPropertyToEvent.cs" />
+    <Compile Include="Migrations\201906021951361_AddForeignKeyPropertyToEvent.Designer.cs">
+      <DependentUpon>201906021951361_AddForeignKeyPropertyToEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906021931370_PopulateCategoriesTable.resx">
       <DependentUpon>201906021931370_PopulateCategoriesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906021951361_AddForeignKeyPropertyToEvent.resx">
+      <DependentUpon>201906021951361_AddForeignKeyPropertyToEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

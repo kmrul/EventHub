@@ -9,6 +9,9 @@ namespace EventHub.Models
 
         public ApplicationUser Organizer { get; set; }
 
+        [Required]
+        public string OrganizerId { get; set; }
+
         public DateTime DateTime { get; set; }
 
         [Required]
@@ -21,5 +24,7 @@ namespace EventHub.Models
 
         public Category Category { get; set; }
 
+        [Required]
+        public byte CategoryId { get; set; }
     }
 }
