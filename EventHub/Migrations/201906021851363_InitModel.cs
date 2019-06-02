@@ -3,7 +3,7 @@ namespace EventHub.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InititalModel : DbMigration
+    public partial class InitModel : DbMigration
     {
         public override void Up()
         {

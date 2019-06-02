@@ -1,8 +1,6 @@
 ﻿using EventHub.Dtos;
 using EventHub.Models;
 using EventHub.ViewModels;
-using Microsoft.AspNet.Identity;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace EventHub.Controllers
@@ -21,7 +19,7 @@ namespace EventHub.Controllers
         {
             var viewModel = new EventForViewModel
             {
-                Categories = _context.Categories.ToList()
+                //Categories = _context.Categories.ToList()
             };
             return View(viewModel);
         }
@@ -35,20 +33,20 @@ namespace EventHub.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    dto.Categories = _context.Categories.ToList();
+                    //dto.Categories = _context.Categories.ToList();
                     return RedirectToAction("Create");
                 }
 
                 var evnt = new Event
                 {
-                    OrganizerId = User.Identity.GetUserId(),
-                    DateTime = dto.GetDateTime(),
-                    CategoryId = dto.Category,
-                    Vanue = dto.Vanue,
-                    Name = dto.Name
+                    //OrganizerId = User.Identity.GetUserId(),
+                    //DateTime = dto.GetDateTime(),
+                    //CategoryId = dto.Category,
+                    //Vanue = dto.Vanue,
+                    //Name = dto.Name
                 };
 
-                _context.Events.Add(evnt);
+                //_context.Events.Add(evnt);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");

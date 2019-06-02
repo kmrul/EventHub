@@ -7,13 +7,13 @@ namespace EventHub.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddEventMigration : IMigrationMetadata
+    public sealed partial class PopulateCategoriesTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddEventMigration));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulateCategoriesTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905262233165_AddEventMigration"; }
+            get { return "201906021931370_PopulateCategoriesTable"; }
         }
         
         string IMigrationMetadata.Source

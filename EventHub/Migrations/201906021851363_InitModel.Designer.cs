@@ -7,13 +7,13 @@ namespace EventHub.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InititalModel : IMigrationMetadata
+    public sealed partial class InitModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InititalModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905252114567_InititalModel"; }
+            get { return "201906021851363_InitModel"; }
         }
         
         string IMigrationMetadata.Source

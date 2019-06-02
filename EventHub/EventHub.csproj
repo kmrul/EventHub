@@ -181,25 +181,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905252114567_InititalModel.cs" />
-    <Compile Include="Migrations\201905252114567_InititalModel.Designer.cs">
-      <DependentUpon>201905252114567_InititalModel.cs</DependentUpon>
+    <Compile Include="Migrations\201906021851363_InitModel.cs" />
+    <Compile Include="Migrations\201906021851363_InitModel.Designer.cs">
+      <DependentUpon>201906021851363_InitModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905262233165_AddEventMigration.cs" />
-    <Compile Include="Migrations\201905262233165_AddEventMigration.Designer.cs">
-      <DependentUpon>201905262233165_AddEventMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201906021854316_CreateEventTable.cs" />
+    <Compile Include="Migrations\201906021854316_CreateEventTable.Designer.cs">
+      <DependentUpon>201906021854316_CreateEventTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905262235570_AddCategoryModel.cs" />
-    <Compile Include="Migrations\201905262235570_AddCategoryModel.Designer.cs">
-      <DependentUpon>201905262235570_AddCategoryModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905272209505_PopulateCategoryTable.cs" />
-    <Compile Include="Migrations\201905272209505_PopulateCategoryTable.Designer.cs">
-      <DependentUpon>201905272209505_PopulateCategoryTable.cs</DependentUpon>
+    <Compile Include="Migrations\201906021931370_PopulateCategoriesTable.cs" />
+    <Compile Include="Migrations\201906021931370_PopulateCategoriesTable.Designer.cs">
+      <DependentUpon>201906021931370_PopulateCategoriesTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -211,6 +208,7 @@
     <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-EventHub-20190524035143.mdf" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -269,7 +267,7 @@
     <Content Include="Views\Events\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -285,17 +283,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905252114567_InititalModel.resx">
-      <DependentUpon>201905252114567_InititalModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021851363_InitModel.resx">
+      <DependentUpon>201906021851363_InitModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905262233165_AddEventMigration.resx">
-      <DependentUpon>201905262233165_AddEventMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021854316_CreateEventTable.resx">
+      <DependentUpon>201906021854316_CreateEventTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905262235570_AddCategoryModel.resx">
-      <DependentUpon>201905262235570_AddCategoryModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905272209505_PopulateCategoryTable.resx">
-      <DependentUpon>201905272209505_PopulateCategoryTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906021931370_PopulateCategoriesTable.resx">
+      <DependentUpon>201906021931370_PopulateCategoriesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
