@@ -1,0 +1,23 @@
+﻿@model EventHub.ViewModels.EventsViewModel
+@{
+    ViewBag.Title = "Events";
+}
+
+<h2>@Model.Heading</h2>
+
+<ul class="events voffset4">
+    @foreach (var evnt in Model.UpcommingEvents)
+    {
+        <li>
+            <div class="date">
+                <div class="month">
+                    @evnt.DateTime.ToString("MMM")
+                </div>
+                <div class="day">
+                    @evnt.DateTime.ToString("d ")
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+
