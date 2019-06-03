@@ -33,6 +33,8 @@ namespace EventHub.Controllers
         {
             try
             {
+
+
                 if (!ModelState.IsValid)
                 {
                     dto.Categories = _context.Categories.ToList();
@@ -51,7 +53,7 @@ namespace EventHub.Controllers
                 _context.Events.Add(evnt);
                 _context.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
             catch
             {

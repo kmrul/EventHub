@@ -1,8 +1,7 @@
 namespace EventHub.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class AddForeignKeyPropertyToEvent : DbMigration
     {
         public override void Up()
@@ -15,7 +14,7 @@ namespace EventHub.Migrations
             CreateIndex("dbo.Events", "OrganizerId");
             AddForeignKey("dbo.Events", "OrganizerId", "dbo.AspNetUsers", "Id", cascadeDelete: true);
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Events", "OrganizerId", "dbo.AspNetUsers");
