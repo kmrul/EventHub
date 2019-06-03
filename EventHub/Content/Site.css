@@ -47,3 +47,37 @@ textarea {
             color: #fff;
             background-color: #712a8e;
         }
+
+
+.event-list {
+    display: flex;
+    padding: 10px;
+}
+
+.date {
+    background: #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.details {
+    padding: 2px 15px;
+}
+
+.month {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.day {
+    font-size: 40px;
+    font-weight: 900;
+    background: #9b59b6;
+    padding: 2px 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.name{
+    font-size:30px;
+}

@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken();
     <div class="form-group">
         @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "eg Kamrul Hasan" })
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "eg AWS Meetup" })
         @Html.ValidationMessageFor(m => m.Name)
     </div>
 
@@ -37,7 +37,7 @@
 
     <div class="form-group">
         @Html.LabelFor(m => m.Category)
-        @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control"})
+        @Html.DropDownListFor(m => m.Category, new SelectList(Model.Categories, "Id", "Name"), "", new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Category)
     </div>
 
@@ -45,3 +45,9 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 }
 
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}

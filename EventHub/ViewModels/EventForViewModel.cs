@@ -25,8 +25,6 @@ namespace EventHub.ViewModels
         public string Time { get; set; }
 
 
-
-
         public IEnumerable<Category> Categories { get; set; }
 
 
