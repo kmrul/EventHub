@@ -32,11 +32,32 @@
             <div class="actions">
                 @if (Model.ShowingActions)
                 {
-                    <button class="btn btn-primary" data-user-id="@evnt.Organizer.Id">Follow</button>
-                    <button class="btn btn-primary" data-event-id="@evnt.Id">Goging ?</button>
+                    @*<button class="btn btn-primary" data-user-id="@evnt.Organizer.Id">Follow</button>*@
+                    <button class="btn btn-primary btn-sm js-toggle-attendance" data-event-id="@evnt.Id">Goging ?</button>
                 }
             </div>
         </li>
     }
 </ul>
 
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $(".js-toggle-attendance").click(function (e) {
+                var button = $(e.target);
+                $.post("/api/attendances", { "EventId": button.attr("data-event-id") })
+                    .done(function () {
+                        button
+                            .removeClass("btn-primary")
+                            .addClass("btn-info")
+                            .text("Going");
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+        });
+    </script>
+}
