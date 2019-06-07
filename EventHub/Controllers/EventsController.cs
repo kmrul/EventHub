@@ -2,6 +2,7 @@
 using EventHub.Models;
 using EventHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -61,6 +62,28 @@ namespace EventHub.Controllers
             }
         }
 
+
+        [Authorize]
+        public ActionResult Attending()
+        {
+            var userId = User.Identity.GetUserId();
+
+            var gigs = _context.Attendances
+                .Where(a => a.AttendeeId == userId)
+                .Select(a => a.Event)
+                .Include(g=>g.Category)
+                .Include(g=>g.Organizer)
+                .ToList();
+
+            var viewModel = new EventsViewModel
+            {
+                UpcommingEvents = gigs,
+                ShowingActions = User.Identity.IsAuthenticated,
+                Heading = "My Attending Events"
+            };
+
+            return View("Events", viewModel);
+        }
 
 
         // GET: Events
