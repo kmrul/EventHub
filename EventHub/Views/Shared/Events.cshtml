@@ -23,16 +23,24 @@
                 </div>
                 <div class="organizer">
                     Organizer: @evnt.Organizer.Name
+
+                    <span class="follow-organization">
+                        @if (Model.ShowingActions)
+                        {
+                            <button class="btn btn-link btn-sm js-toggle-follow" data-user-id="@evnt.OrganizerId">Follow</button>
+                        }
+                    </span>
                 </div>
                 <div class="category">
                     @evnt.Category
                 </div>
+
+                
             </div>
 
             <div class="actions">
                 @if (Model.ShowingActions)
                 {
-                    @*<button class="btn btn-primary" data-user-id="@evnt.Organizer.Id">Follow</button>*@
                     <button class="btn btn-primary btn-sm js-toggle-attendance" data-event-id="@evnt.Id">Goging ?</button>
                 }
             </div>
@@ -58,6 +66,22 @@
                         alert("Something failed");
                     });
             });
+
+
+            $(".js-toggle-follow").click(function (e) {
+                var button = $(e.target);
+                var idOrg = button.attr("data-user-id");
+                console.log("ID:", idOrg);
+                $.post("/api/Followings", { "FolloweeId": button.attr("data-user-id") })
+                    .done(function () {
+                        button
+                            .text("Following");
+                    })
+                    .fail(function () {
+                        alert("Something failed");
+                    });
+            });
+
         });
     </script>
 }
