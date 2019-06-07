@@ -12,10 +12,20 @@ namespace EventHub.Models
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Attendance>()
+                .HasRequired(a => a.Event)
+                .WithMany()
+                .WillCascadeOnDelete(false);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

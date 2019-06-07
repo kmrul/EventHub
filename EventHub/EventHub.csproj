@@ -201,10 +201,15 @@
     <Compile Include="Migrations\201906031137579_AddedNameAuthentication.Designer.cs">
       <DependentUpon>201906031137579_AddedNameAuthentication.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906070158350_AddAttendance.cs" />
+    <Compile Include="Migrations\201906070158350_AddAttendance.Designer.cs">
+      <DependentUpon>201906070158350_AddAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -218,6 +223,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\aspnet-EventHub-20190524035143.mdf" />
+    <Content Include="App_Data\aspnet-EventHub-20190524035143_log.ldf">
+      <DependentUpon>aspnet-EventHub-20190524035143.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -307,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031137579_AddedNameAuthentication.resx">
       <DependentUpon>201906031137579_AddedNameAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906070158350_AddAttendance.resx">
+      <DependentUpon>201906070158350_AddAttendance.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
