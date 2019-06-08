@@ -26,6 +26,7 @@ namespace EventHub.Controllers
             var gigs = _context.Events
                 .Where(g => g.OrganizerId == userId && g.DateTime > DateTime.Now)
                 .Include(g => g.Category)
+                .Include(g=>g.Organizer)
                 .ToList();
 
             return View(gigs);
@@ -69,7 +70,7 @@ namespace EventHub.Controllers
                 _context.Events.Add(evnt);
                 _context.SaveChanges();
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("mine", "events");
             }
             catch
             {
