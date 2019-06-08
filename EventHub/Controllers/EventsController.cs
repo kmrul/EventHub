@@ -2,6 +2,7 @@
 using EventHub.Models;
 using EventHub.ViewModels;
 using Microsoft.AspNet.Identity;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
@@ -16,6 +17,20 @@ namespace EventHub.Controllers
         {
             _context = new ApplicationDbContext();
         }
+
+
+        [Authorize]
+        public ActionResult Mine()
+        {
+            var userId = User.Identity.GetUserId();
+            var gigs = _context.Events
+                .Where(g => g.OrganizerId == userId && g.DateTime > DateTime.Now)
+                .Include(g => g.Category)
+                .ToList();
+
+            return View(gigs);
+        }
+
 
         [Authorize]
         public ActionResult Create()
