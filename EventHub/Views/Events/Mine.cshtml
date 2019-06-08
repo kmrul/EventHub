@@ -27,11 +27,12 @@
 
                 </div>
                 <div class="category">
-                    @evnt.Category
+                    @evnt.Category.Name
                 </div>
 
-                <div class="actions">
-                    <a href="@Html.Action("edit","events")">Edit</a>
+                <div class="my-actions">
+                    <a href="@Url.Action("edit","events",new { id=evnt.Id})">Edit</a>
+                    <a href="@Url.Action("mine","events")">Delete</a>
                 </div>
 
             </div>

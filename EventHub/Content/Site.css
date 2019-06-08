@@ -78,6 +78,15 @@ textarea {
     border-radius: 5px;
 }
 
-.name{
-    font-size:30px;
+.name {
+    font-size: 30px;
+}
+
+.events > li .my-actions {
+    display: none;
+}
+
+
+.events > li:hover .my-actions {
+    display: block;
 }

@@ -117,7 +117,19 @@ namespace EventHub.Controllers
         // GET: Events/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var userId = User.Identity.GetUserId();
+            var gig = _context.Events.Single(g => g.Id == id && g.OrganizerId == userId);
+
+            var viewModel = new EventForViewModel
+            {
+                Name = gig.Name,
+                Vanue = gig.Vanue,
+                Date = gig.DateTime.ToString("dd MMM yyyy"),
+                Time = gig.DateTime.ToString("HH:mm"),
+                Category = gig.CategoryId
+            };
+
+            return View("Create", viewModel);
         }
 
         // POST: Events/Edit/5
