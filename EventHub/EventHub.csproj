@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201906070605303_AddFollowing.Designer.cs">
       <DependentUpon>201906070605303_AddFollowing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906080310595_updateCategoryIdRename.cs" />
+    <Compile Include="Migrations\201906080310595_updateCategoryIdRename.Designer.cs">
+      <DependentUpon>201906080310595_updateCategoryIdRename.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -320,7 +324,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\EventForm.cshtml" />
     <Content Include="Views\Shared\Events.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -362,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906070605303_AddFollowing.resx">
       <DependentUpon>201906070605303_AddFollowing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906080310595_updateCategoryIdRename.resx">
+      <DependentUpon>201906080310595_updateCategoryIdRename.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
