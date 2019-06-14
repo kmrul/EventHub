@@ -25,6 +25,9 @@ namespace EventHub.Controllers.Api
         {
             var userId = User.Identity.GetUserId();
             var evnt = _context.Events.Single(g => g.Id == id && g.OrganizerId == userId);
+            if (evnt.IsCanceled)
+                return NotFound();
+
             evnt.IsCanceled = true;
             _context.SaveChanges();
 

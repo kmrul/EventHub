@@ -31,7 +31,7 @@
                 </div>
 
                 <div class="my-actions">
-                    <a href="@Url.Action("edit","events",new { id=evnt.Id})">Edit</a> | 
+                    <a href="@Url.Action("edit","events",new { id=evnt.Id})">Edit</a> |
                     <a href="#" class="js-cancel-event" data-event-id="@evnt.Id">Cancel</a>
                 </div>
 
@@ -47,20 +47,51 @@
         $(document).ready(function () {
             $('.js-cancel-event').click(function (e) {
                 var link = $(e.target);
-                if (confirm("Are you sure you want to delete this event?")) {
-                    $.ajax({
-                        url: "/api/events" + link.attr("data-event-id"),
-                        method: "DELETE"
-                    })
-                        .done(function () {
-                            link.parents("li").fadeOut(function () {
-                                $(this).remove();
+
+                bootbox.confirm({
+                    title: "Delete",
+                    message: "Are you sure you want to delete this event?",
+                    buttons: {
+                        cancel: {
+                            label: '<i class="fa fa-times"></i> Cancel'
+                        },
+                        confirm: {
+                            label: '<i class="fa fa-check"></i> Confirm'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result == true) {
+                            $.ajax({
+                                url: "/api/events/" + link.attr("data-event-id"),
+                                method: "DELETE"
                             })
-                        })
-                        .fail(function () {
-                            alert("Something failed");
-                        })
-                }
+                                .done(function () {
+                                    link.parents("li").fadeOut(function () {
+                                        $(this).remove();
+                                    })
+                                })
+                                .fail(function () {
+                                    alert("Something failed");
+                                })
+                        }
+                        console.log('This was logged in the callback: ' + result);
+                    }
+                });
+
+                //bootbox.confirm("Are you sure you want to delete this event?", function (result) {
+                //    $.ajax({
+                //        url: "/api/events/" + link.attr("data-event-id"),
+                //        method: "DELETE"
+                //    })
+                //        .done(function () {
+                //            link.parents("li").fadeOut(function () {
+                //                $(this).remove();
+                //            })
+                //        })
+                //        .fail(function () {
+                //            alert("Something failed");
+                //        })
+                //});
             });
         });
     </script>

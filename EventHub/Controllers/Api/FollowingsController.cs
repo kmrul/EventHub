@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace EventHub.Controllers
+namespace EventHub.Controllers.Api
 {
     public class FollowingsController : ApiController
     {
