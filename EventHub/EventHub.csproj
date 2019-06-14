@@ -223,6 +223,10 @@
     <Compile Include="Migrations\201906080310595_updateCategoryIdRename.Designer.cs">
       <DependentUpon>201906080310595_updateCategoryIdRename.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906091034568_AddCanceledToEvent.cs" />
+    <Compile Include="Migrations\201906091034568_AddCanceledToEvent.Designer.cs">
+      <DependentUpon>201906091034568_AddCanceledToEvent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906080310595_updateCategoryIdRename.resx">
       <DependentUpon>201906080310595_updateCategoryIdRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906091034568_AddCanceledToEvent.resx">
+      <DependentUpon>201906091034568_AddCanceledToEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
