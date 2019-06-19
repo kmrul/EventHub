@@ -29,6 +29,29 @@ namespace EventHub.Controllers.Api
                 return NotFound();
 
             evnt.IsCanceled = true;
+
+            var notification = new Notification
+            {
+                DateTime = DateTime.Now,
+                Event = evnt,
+                Type = NotificationType.EventCanceled
+            };
+
+            var attendees = _context.Attendances
+                .Where(a => a.EventId == evnt.Id)
+                .Select(a => a.Attendee)
+                .ToList();
+            foreach (var attendee in attendees)
+            {
+                var userNotifcation = new UserNotification
+                {
+                    User = attendee,
+                    Notification = notification
+                };
+                _context.UserNotifications.Add(userNotifcation);
+
+            }
+
             _context.SaveChanges();
 
             return Ok();
