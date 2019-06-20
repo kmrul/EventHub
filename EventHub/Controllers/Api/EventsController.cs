@@ -1,4 +1,5 @@
 ﻿using EventHub.Models;
+using System.Data.Entity;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -24,34 +25,14 @@ namespace EventHub.Controllers.Api
         public IHttpActionResult Cancel(int id)
         {
             var userId = User.Identity.GetUserId();
-            var evnt = _context.Events.Single(g => g.Id == id && g.OrganizerId == userId);
+            var evnt = _context.Events
+                .Include(g=>g.Attendaces.Select(a=>a.Attendee))
+                .Single(g => g.Id == id && g.OrganizerId == userId);
+
             if (evnt.IsCanceled)
                 return NotFound();
 
-            evnt.IsCanceled = true;
-
-            var notification = new Notification
-            {
-                DateTime = DateTime.Now,
-                Event = evnt,
-                Type = NotificationType.EventCanceled
-            };
-
-            var attendees = _context.Attendances
-                .Where(a => a.EventId == evnt.Id)
-                .Select(a => a.Attendee)
-                .ToList();
-            foreach (var attendee in attendees)
-            {
-                var userNotifcation = new UserNotification
-                {
-                    User = attendee,
-                    Notification = notification
-                };
-                _context.UserNotifications.Add(userNotifcation);
-
-            }
-
+            evnt.Cancel();
             _context.SaveChanges();
 
             return Ok();

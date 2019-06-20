@@ -8,13 +8,29 @@ namespace EventHub.Models
 {
     public class Notification
     {
-        public int Id { get; set; }
-        public DateTime DateTime { get; set; }
-        public NotificationType Type { get; set; }
+        public int Id { get; private set; }
+        public DateTime DateTime { get; private set; }
+        public NotificationType Type { get; private set; }
         public DateTime? OriginalDateTime { get; set; }
         public string OriginalValue { get; set; }
 
         [Required]
-        public Event Event { get; set; }
+        public Event Event { get; private set; }
+
+        public Notification()
+        {
+
+        }
+
+        public Notification(NotificationType type, Event evnt)
+        {
+            if (evnt == null)
+                throw new Exception("event");
+            Type = type;
+            Event = evnt;
+            DateTime = DateTime.Now;
+        }
+
+       
     }
 }
