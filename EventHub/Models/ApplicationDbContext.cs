@@ -28,7 +28,7 @@ namespace EventHub.Models
         {
             modelBuilder.Entity<Attendance>()
                 .HasRequired(a => a.Event)
-                .WithMany()
+                .WithMany(g=>g.Attendaces)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ApplicationUser>()
@@ -43,7 +43,7 @@ namespace EventHub.Models
 
             modelBuilder.Entity<UserNotification>()
                 .HasRequired(n => n.User)
-                .WithMany()
+                .WithMany(u=>u.UserNotifications)
                 .WillCascadeOnDelete(false);
 
 

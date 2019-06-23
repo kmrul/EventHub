@@ -151,13 +151,15 @@ namespace EventHub.Controllers
                     return RedirectToAction("EventForm");
                 }
                 var userId = User.Identity.GetUserId();
-                var gig = _context.Events.Single(g => g.Id == dto.Id && g.OrganizerId == userId);
-                gig.Name = dto.Name;
-                gig.Vanue = dto.Vanue;
-                gig.DateTime = dto.GetDateTime();
+                var evnt = _context.Events
+                    .Include(g=>g.Attendaces.Select(a=>a.Attendee))
+                    .Single(g => g.Id == dto.Id && g.OrganizerId == userId);
+                evnt.Name = dto.Name;
+                evnt.Vanue = dto.Vanue;
+                evnt.DateTime = dto.GetDateTime();
+                evnt.CategoryId = dto.Category;
 
-                gig.CategoryId = dto.Category;
-
+                evnt.Modify(dto.GetDateTime(),dto.Vanue,dto.Category);
                 _context.SaveChanges();
 
                 return RedirectToAction("mine", "events");

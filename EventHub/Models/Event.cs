@@ -44,12 +44,24 @@ namespace EventHub.Models
         {
             IsCanceled = true;
 
-            var notification = new Notification(NotificationType.EventCanceled, this);
+            var notification = Notification.EventCancel(this);
 
             foreach (var attendee in Attendaces.Select(a => a.Attendee))
             {
                 attendee.Notify(notification);
             }
+        }
+
+        public void Modify(DateTime dateTime, string vanue, byte category)
+        {
+            var notification = Notification.EventUpdated(this, DateTime, Vanue);
+
+            Vanue = vanue;
+            DateTime = dateTime;
+            CategoryId = category;
+
+            foreach (var attendee in Attendaces.Select(a => a.Attendee))
+                attendee.Notify(notification);
         }
     }
 }
