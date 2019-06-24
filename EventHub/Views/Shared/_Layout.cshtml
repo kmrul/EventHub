@@ -27,7 +27,7 @@
                     <li>@Html.ActionLink("Add A Event", "Create", "Events")</li>
 
                     @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -44,5 +44,44 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script type="text/x-template" id="notifications-template">
+        <ul>
+            <% 
+                _.each(notifications,function(notification){
+                if(notification.type == 1){ %>
+                    <li> <%= notification.event.organizer.name %> has cancel the event at <%= notification.event.Vanue %> at <%= notification.event.dateTime  %>.</li>  
+                <% }
+            })
+            %>
+        </ul>
+    </script>
+
+    <script>
+        $(function () {
+            $.getJSON('/api/notifications', function (notifications) {
+                $('.js-notifications-count')
+                    .text(notifications.length)
+                    .removeClass("hide")
+                    .addClass("animated bounceInDown");
+
+                $('.notifications').popover({
+                    html: true,
+                    title: "Notifications",
+                    content: function () {
+
+                        var compiled = _.template($("#notifications-template").html());
+                        return compiled({ notifications: notifications });
+                        
+                    },
+                    placement: "bottom"
+                });
+
+            });
+
+            
+
+        });
+    </script>
 </body>
 </html>

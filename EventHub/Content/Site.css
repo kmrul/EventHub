@@ -47,7 +47,16 @@ textarea {
             color: #fff;
             background-color: #712a8e;
         }
+    .navbar-inverse .notifications {
+        position:relative;
+    }
 
+        .navbar-inverse .notifications .badge {
+            position: absolute;
+            top: 8px;
+            right: -1px;
+            background: #e20a0a;
+        }
 
 .event-list {
     display: flex;
@@ -90,3 +99,5 @@ textarea {
 .events > li:hover .my-actions {
     display: block;
 }
+
+
