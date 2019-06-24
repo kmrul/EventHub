@@ -10,12 +10,12 @@ namespace EventHub.Dtos
     public class NotificationDto
     {
         public int Id { get; private set; }
-        public DateTime DateTime { get; private set; }
-        public NotificationType Type { get; private set; }
-        public DateTime? OriginalDateTime { get; private set; }
-        public string OriginalValue { get; private set; }
+        public DateTime DateTime { get; set; }
+        public NotificationType Type { get; set; }
+        public DateTime? OriginalDateTime { get; set; }
+        public string OriginalValue { get; set; }
 
         [Required]
-        public EventDto Event { get; private set; }
+        public EventDto Event { get; set; }
     }
 }

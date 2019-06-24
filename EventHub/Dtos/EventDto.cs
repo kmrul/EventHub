@@ -12,7 +12,7 @@ namespace EventHub.Dtos
     public class EventDto
     {
         public int Id { get; set; }
-        public bool IsCanceled { get; private set; }
+        public bool IsCanceled { get; set; }
         public UserDto Organizer { get; set; }
         public DateTime DateTime { get; set; }
         public string Name { get; set; }

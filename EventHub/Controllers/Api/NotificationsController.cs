@@ -1,4 +1,7 @@
-﻿using EventHub.Models;
+﻿using AutoMapper;
+using EventHub.App_Start;
+using EventHub.Dtos;
+using EventHub.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -25,8 +28,29 @@ namespace EventHub.Controllers.Api
             var notifications = _context.UserNotifications
                 .Where(un => un.UserId == userId)
                 .Select(un => un.Notification)
-                .Include(n => n.Event.Category).ToList() ;
-            return notifications;
+                .Include(n => n.Event.Organizer).ToList();
+
+            //return notifications.Select(Mapper.Map<Notification, NotificationDto>);
+
+            return notifications.Select(n => new NotificationDto()
+            {
+                DateTime = n.DateTime,
+                Event = new EventDto
+                {
+                    Organizer = new UserDto
+                    {
+                        Id = n.Event.Id,
+                        Name = n.Event.Organizer.Name
+                    },
+                    DateTime = n.Event.DateTime,
+                    Id = n.Event.Id,
+                    IsCanceled = n.Event.IsCanceled,
+                    Vanue = n.Event.Vanue
+                },
+                OriginalDateTime = n.OriginalDateTime,
+                OriginalValue = n.OriginalValue,
+                Type = n.Type
+            });
         }
 
     }
