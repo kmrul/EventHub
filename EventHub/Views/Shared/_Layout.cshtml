@@ -42,16 +42,36 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
     <script type="text/x-template" id="notifications-template">
-        <ul>
-            <% 
-                _.each(notifications,function(notification){
-                if(notification.type == 1){ %>
-                    <li> <%= notification.event.organizer.name %> has cancel the event at <%= notification.event.Vanue %> at <%= notification.event.dateTime  %>.</li>  
-                <% }
+        <ul class="notifications">
+            <%
+            _.each(notifications,function(notification){
+            if(notification.type == 1){ %>
+            <li> <span class="highlight"><%= notification.event.organizer.name %></span> has cancel the event at <span class="highlight"><%= notification.event.vanue %></span> and <span class="highlight"><%= moment(notification.event.dateTime).format("D MMM YYYY HH:mm")  %></span>.</li>
+            <% }
+            else if(notification.type == 2){
+            var changes = [],
+            originalValues = [],
+            newValues = [];
+            console.log("LL:",notification)
+            if(notification.OriginalValue != notification.event.vanue)
+            {
+            changes.push('vanue');
+            originalValues.push(notification.originalVanue);
+            newValues.push(notification.event.vanue);
+            }
+            if(notification.OriginalDateTime != notification.event.dateTime)
+            {
+                changes.push('date/time');
+                originalValues.push(moment(notification.originalDateTime).format("D MMM YYYY HH:mm"));
+                newValues.push(moment(notification.event.dateTime).format("D MMM YYYY HH:mm"));
+            }%>
+            <li> <span class="highlight"><%= notification.event.organizer.name %></span>has change the <%= changes.join(' and ') %> of the event from <span class="highlight"><%= originalValues.join('/')  %></span> to <span class="highlight"><%= newValues.join('/')  %></span>.</li>
+            <% }
             })
             %>
         </ul>
@@ -60,6 +80,9 @@
     <script>
         $(function () {
             $.getJSON('/api/notifications', function (notifications) {
+
+                if (notifications.length == 0) return;
+
                 $('.js-notifications-count')
                     .text(notifications.length)
                     .removeClass("hide")
@@ -72,14 +95,14 @@
 
                         var compiled = _.template($("#notifications-template").html());
                         return compiled({ notifications: notifications });
-                        
+
                     },
                     placement: "bottom"
                 });
 
             });
 
-            
+
 
         });
     </script>
