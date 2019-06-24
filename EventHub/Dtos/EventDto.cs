@@ -12,34 +12,13 @@ namespace EventHub.Dtos
     public class EventDto
     {
         public int Id { get; set; }
-
-        [Required]
+        public bool IsCanceled { get; private set; }
+        public UserDto Organizer { get; set; }
+        public DateTime DateTime { get; set; }
         public string Name { get; set; }
-
-        public byte Category { get; set; }
-
-        [Required]
         public string Vanue { get; set; }
-
-        [Required]
-        [FutureDate]
-        public string Date { get; set; }
-
-
-        [Required]
-        [ValidTime]
-        public string Time { get; set; }
+        public CategoryDto Category { get; set; }
         
-
-        public IEnumerable<Category> Categories { get; set; }
-
-        public string Heading { get; set; }
-
-       
-
-        public DateTime GetDateTime()
-        {
-            return DateTime.Parse(String.Format("{0} {1}", Date, Time));
-        }
+        public ICollection<Attendance> Attendaces { get; internal set; }
     }
 }
