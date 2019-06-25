@@ -18,18 +18,28 @@ namespace EventHub.Controllers
 
 
 
-        public ActionResult Index()
+        public ActionResult Index(string query = null)
         {
+
             var upcommingEvents = _context.Events
                 .Include(e => e.Organizer)
                 .Include(e => e.Category)
                 .Where(e => e.DateTime > DateTime.Now);
 
+            if(!string.IsNullOrWhiteSpace(query))
+            {
+                upcommingEvents = upcommingEvents.Where(g =>
+                                                        g.Organizer.Name.Contains(query) ||
+                                                        g.Category.Name.Contains(query) ||
+                                                        g.Vanue.Contains(query)||
+                                                        g.Name.Contains(query));
+            }
             var viewModel = new EventsViewModel
             {
                 UpcommingEvents = upcommingEvents,
                 ShowingActions = User.Identity.IsAuthenticated,
-                Heading = "Show Upcomming Events"
+                Heading = "Show Upcomming Events",
+                SearchTerm = query
             };
 
             return View("Events",viewModel);

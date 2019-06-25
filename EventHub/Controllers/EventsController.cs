@@ -33,9 +33,9 @@ namespace EventHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult Serach(EventsViewModel viewModel)
+        public ActionResult Search(EventsViewModel viewModel)
         {
-
+            return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
         }
 
         [Authorize]
