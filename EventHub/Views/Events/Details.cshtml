@@ -1,0 +1,12 @@
+﻿@model EventHub.Models.Event
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2> @Html.DisplayFor(m => m.Name, new { @class = "label" })</h2>
+
+<label>Event Name: </label> @Html.DisplayFor(m => m.DateTime, new { @class = "label" })
+
+<label>Event Name: </label> @Html.DisplayFor(m => m.DateTime, new { @class = "label" })
+
+<label>Event Name: </label> @Html.DisplayFor(m => m.Organizer.Name, new { @class = "label" })

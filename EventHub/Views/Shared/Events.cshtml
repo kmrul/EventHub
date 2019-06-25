@@ -32,7 +32,7 @@
             </div>
             <div class="details">
                 <div class="name">
-                    @evnt.Name
+                    <a href="@Url.Action("../events/details/"+ evnt.Id)"> @evnt.Name</a>
                 </div>
                 <div class="organizer">
                     Organizer: @evnt.Organizer.Name

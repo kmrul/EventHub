@@ -117,7 +117,13 @@ namespace EventHub.Controllers
         // GET: Events/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if (string.IsNullOrEmpty(id.ToString()))
+                return HttpNotFound("No event found");
+
+            var evnt = _context.Events
+                .Include(u => u.Organizer)
+                .Where(e => e.Id == id).SingleOrDefault();
+            return View(evnt);
         }
 
         // GET: Events/Edit/5
@@ -157,14 +163,14 @@ namespace EventHub.Controllers
                 }
                 var userId = User.Identity.GetUserId();
                 var evnt = _context.Events
-                    .Include(g=>g.Attendaces.Select(a=>a.Attendee))
+                    .Include(g => g.Attendaces.Select(a => a.Attendee))
                     .Single(g => g.Id == dto.Id && g.OrganizerId == userId);
                 evnt.Name = dto.Name;
                 evnt.Vanue = dto.Vanue;
                 evnt.DateTime = dto.GetDateTime();
                 evnt.CategoryId = dto.Category;
 
-                evnt.Modify(dto.GetDateTime(),dto.Vanue,dto.Category);
+                evnt.Modify(dto.GetDateTime(), dto.Vanue, dto.Category);
                 _context.SaveChanges();
 
                 return RedirectToAction("mine", "events");
