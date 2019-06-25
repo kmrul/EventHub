@@ -125,3 +125,7 @@ ul.notifications{
     box-shadow: none;
     -webkit-box-shadow: none;
 }
+
+.search-group{
+    width:300px;
+}

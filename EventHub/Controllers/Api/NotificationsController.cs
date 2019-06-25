@@ -53,5 +53,18 @@ namespace EventHub.Controllers.Api
             });
         }
 
+
+        [HttpPost]
+        public IHttpActionResult MarkAsRead()
+        {
+            var userId = User.Identity.GetUserId();
+            var notifications = _context.UserNotifications
+                .Where(un => un.UserId == userId && !un.IsRead)
+                .ToList();
+            notifications.ForEach(n => n.Read());
+            _context.SaveChanges();
+            return Ok();
+        }
+
     }
 }

@@ -37,5 +37,10 @@ namespace EventHub.Models
             Notification = notification;
             User = user;
         }
+
+        public void Read()
+        {
+            IsRead = true;
+        }
     }
 }

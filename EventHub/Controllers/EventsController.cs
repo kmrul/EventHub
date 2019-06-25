@@ -32,6 +32,11 @@ namespace EventHub.Controllers
             return View(gigs);
         }
 
+        [HttpPost]
+        public ActionResult Serach(EventsViewModel viewModel)
+        {
+
+        }
 
         [Authorize]
         public ActionResult Create()
