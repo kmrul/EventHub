@@ -1,5 +1,6 @@
 ﻿using EventHub.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EventHub.ViewModels
 {
@@ -11,5 +12,9 @@ namespace EventHub.ViewModels
 
         public string Heading { get; set; }
         public string SearchTerm { get; set; }
+        public Event Event { get; internal set; }
+        public bool IsAttending { get; internal set; }
+        public bool IsFollowing { get; internal set; }
+        public ILookup<int, Attendance> Attendances { get; set; }
     }
 }

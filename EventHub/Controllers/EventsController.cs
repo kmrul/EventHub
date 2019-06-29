@@ -122,8 +122,22 @@ namespace EventHub.Controllers
 
             var evnt = _context.Events
                 .Include(u => u.Organizer)
-                .Where(e => e.Id == id).SingleOrDefault();
-            return View(evnt);
+                .Include(u=>u.Category)
+                .Where(e => e.Id == id).SingleOrDefault(g=>g.Id == id);
+
+            var viewModel = new EventsViewModel { Event = evnt };
+
+            if(User.Identity.IsAuthenticated)
+            {
+                var userId = User.Identity.GetUserId();
+
+                viewModel.IsAttending = _context.Attendances
+                    .Any(a => a.EventId == evnt.Id && a.AttendeeId == userId);
+                viewModel.IsFollowing = _context.Followings
+                    .Any(f => f.FolloweeId == evnt.OrganizerId && f.FolloweeId == userId);
+            }
+
+            return View("Details", viewModel);
         }
 
         // GET: Events/Edit/5

@@ -3,21 +3,26 @@
     ViewBag.Title = "Events";
 }
 
-<h2>@Model.Heading</h2>
-
-@using (Html.BeginForm("Search", "Events"))
-{
-    <div class="form-group">
-        <div class="input-group search-group">
-            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control" })
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-search"></i>
-            </span>
-        </div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>@Model.Heading</h2>
     </div>
+    <div class="col-md-6 search-section">
+        @using (Html.BeginForm("Search", "Events"))
+        {
+            <div class="form-group">
+                <div class="input-group search-group">
+                    @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control" })
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
 
-}
 <ul class="events voffset4">
     @foreach (var evnt in Model.UpcommingEvents)
     {
@@ -54,7 +59,7 @@
             <div class="actions">
                 @if (Model.ShowingActions)
                 {
-                    <button class="btn btn-primary btn-sm js-toggle-attendance" data-event-id="@evnt.Id">Goging ?</button>
+                    <button class="btn btn-primary btn-sm js-toggle-attendance @(Model.Attendances.Contains(evnt.Id) ? "btn-info": "btn-default")" data-event-id="@evnt.Id">Goging ?</button>
                 }
             </div>
         </li>

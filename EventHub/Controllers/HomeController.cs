@@ -1,5 +1,6 @@
 ﻿using EventHub.Models;
 using EventHub.ViewModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Data.Entity;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace EventHub.Controllers
                 .Include(e => e.Organizer)
                 .Include(e => e.Category)
                 .Where(e => e.DateTime > DateTime.Now);
+            
 
             if(!string.IsNullOrWhiteSpace(query))
             {
@@ -33,13 +35,21 @@ namespace EventHub.Controllers
                                                         g.Category.Name.Contains(query) ||
                                                         g.Vanue.Contains(query)||
                                                         g.Name.Contains(query));
+
             }
+            var userId = User.Identity.GetUserId();
+            var attendances = _context.Attendances
+                .Where(a => a.AttendeeId == userId && a.Event.DateTime > DateTime.Now)
+                .ToList()
+                .ToLookup(a => a.EventId);
+
             var viewModel = new EventsViewModel
             {
                 UpcommingEvents = upcommingEvents,
                 ShowingActions = User.Identity.IsAuthenticated,
                 Heading = "Show Upcomming Events",
-                SearchTerm = query
+                SearchTerm = query,
+                Attendances = attendances
             };
 
             return View("Events",viewModel);
