@@ -97,11 +97,17 @@ namespace EventHub.Controllers
                 .Include(g => g.Organizer)
                 .ToList();
 
+            var attendances = _context.Attendances
+                .Where(a => a.AttendeeId == userId && a.Event.DateTime > DateTime.Now)
+                .ToList()
+                .ToLookup(a => a.EventId);
+
             var viewModel = new EventsViewModel
             {
                 UpcommingEvents = gigs,
                 ShowingActions = User.Identity.IsAuthenticated,
-                Heading = "My Attending Events"
+                Heading = "My Attending Events",
+                Attendances = attendances
             };
 
             return View("Events", viewModel);
@@ -117,13 +123,13 @@ namespace EventHub.Controllers
         // GET: Events/Details/5
         public ActionResult Details(int id)
         {
-            if (string.IsNullOrEmpty(id.ToString()))
-                return HttpNotFound("No event found");
-
             var evnt = _context.Events
                 .Include(u => u.Organizer)
                 .Include(u=>u.Category)
-                .Where(e => e.Id == id).SingleOrDefault(g=>g.Id == id);
+                .SingleOrDefault(g=>g.Id == id);
+            if (evnt == null)
+                return HttpNotFound();
+
 
             var viewModel = new EventsViewModel { Event = evnt };
 
