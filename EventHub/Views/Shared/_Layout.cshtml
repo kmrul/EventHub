@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@*@model EventHub.ViewModels.EventsViewModel*@
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,9 @@
     <title>@ViewBag.Title - A Event Sharing Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+
+
 
     <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i|Montserrat:400,400i,500,500i,600,600i,700,700i,800|Roboto:400,400i,500,700&display=swap" rel="stylesheet">
 
@@ -26,25 +30,53 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Add A Event", "Create", "Events")</li>
 
-                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
+                <ul class="nav navbar-nav text-center">
+                    <li class="nav-search-box">
+                        @using (Html.BeginForm("Search", "Events"))
+                        {
+                            <div class="form-group">
+                                @*@Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control nav-search-textbox", placeholder = "Search event..." })*@
+                            </div>
+                        }
+                    </li>
+                </ul>
+
+
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - A Event Sharing Application</p>
-        </footer>
+
+
     </div>
+
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-4">Column 1</div>
+                    <div class="col-md-4">Column 2</div>
+                    <div class="col-md-4">Column 3</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="text-center">&copy; @DateTime.Now.Year - A Event Sharing Application</p>
+            </div>
+        </div>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/lib")
     @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/plugin/owlcarousel/css")
+    @Scripts.Render("~/plugin/owlcarousel/js")
+
     @RenderSection("scripts", required: false)
 
     <script type="text/x-template" id="notifications-template">
@@ -111,6 +143,18 @@
 
 
         });
+
+        $('.owl-carousel').owlCarousel({
+            navigation: true,
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            singleItem: true,
+            pagination: false,
+            rewindSpeed: 500
+        });
+
     </script>
+
+
 </body>
 </html>

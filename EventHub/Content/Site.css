@@ -1,15 +1,17 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    /*font-family: 'Roboto', sans-serif;*/
-    font-family: 'Lato', sans-serif;
-    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    background: #f7f7f7;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top:60px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -29,26 +31,29 @@ textarea {
 
 /*Custom CSS*/
 .navbar-inverse {
-    background: #9b59b6;
+    background: #fff;
+    border: none;
+    padding: 15px;
 }
 
     .navbar-inverse .navbar-brand {
-        color: #f39c12;
+        color: #000;
         font-weight: 900;
         font-size: 20px;
     }
 
     .navbar-inverse .navbar-nav > li > a {
-        color: #ecf0f1;
+        color: #000;
+        font-weight: 700;
         font-size: 15px;
     }
 
         .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-            color: #fff;
-            background-color: #712a8e;
+            color: #000;
         }
+
     .navbar-inverse .notifications {
-        position:relative;
+        position: relative;
     }
 
         .navbar-inverse .notifications .badge {
@@ -101,23 +106,22 @@ textarea {
 }
 
 
-ul.notifications{
-    list-style:none;
-    padding-left:0;
+ul.notifications {
+    list-style: none;
+    padding-left: 0;
 }
 
     ul.notifications > li {
-        border-bottom:1px solid #ddd;
-        padding:10px 0;
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0;
     }
 
-    ul.notifications > li:last-child {
-        border-bottom: none;
-    }
+        ul.notifications > li:last-child {
+            border-bottom: none;
+        }
 
-    ul.notifications .highlight{
-        font-weight:bold;
-
+    ul.notifications .highlight {
+        font-weight: bold;
     }
 
 
@@ -126,11 +130,66 @@ ul.notifications{
     -webkit-box-shadow: none;
 }
 
-.search-group{
-    width:300px;
+.search-group {
+    width: 300px;
 }
 
 
-.search-section{
-    padding-top:15px;
+.search-section {
+    padding-top: 15px;
+}
+
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #000;
+    background-color: transparent;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+}
+
+.nav-search-box {
+    padding-left: 25%;
+    padding-top: 0px;
+    margin-top: -10px;
+}
+
+
+.nav-search-textbox {
+    border-radius: 15px;
+    float: left;
+    max-width: 100%;
+    width: 450px;
+    padding: 18px 12px;
+    font-size: 15px;
+}
+
+
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.event-list {
+    background: #fff;
+    border-radius: 10px;
+}
+
+.footer-top {
+    background: #263238;
+    padding: 37px 10px;
+    color: #fff;
+    margin: 20px 0;
+}
+
+.advance-event-search {
+    background: #00b657;
+    padding: 30px 40px 40px 0;
+    text-align: center;
 }

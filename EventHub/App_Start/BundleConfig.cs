@@ -32,6 +32,16 @@ namespace EventHub
                       "~/Scripts/bootbox.min.js"
                       ));
 
+            bundles.Add(new StyleBundle("~/plugin/owlcarousel/css").Include(
+                    "~/Plugins/owlcarousel/assets/owl.carousel.min.css",
+                    "~/Plugins/owlcarousel/assets/owl.theme.default.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/plugin/owlcarousel/js").Include(
+                    "~/Plugins/owlcarousel/owl.carousel.min.js"
+                    
+                ));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/animate.css",

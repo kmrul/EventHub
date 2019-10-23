@@ -52,7 +52,7 @@ namespace EventHub.Controllers
                 Attendances = attendances
             };
 
-            return View("Events",viewModel);
+            return View("index",viewModel);
         }
 
         public ActionResult About()
