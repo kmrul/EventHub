@@ -268,10 +268,6 @@
     <Compile Include="ViewModels\ValidTime.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-EventHub-20190524035143.mdf" />
-    <Content Include="App_Data\aspnet-EventHub-20190524035143_log.ldf">
-      <DependentUpon>aspnet-EventHub-20190524035143.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -301,6 +297,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\findnearby - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\findnearby - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
