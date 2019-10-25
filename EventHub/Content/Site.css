@@ -10,8 +10,8 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    padding-top:60px;
-    
+    padding-top: 60px;
+    padding-bottom: 15px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -25,7 +25,7 @@
 input,
 select,
 textarea {
-    max-width: 280px;
+    
 }
 
 
@@ -192,4 +192,48 @@ ul.notifications {
     background: #00b657;
     padding: 30px 40px 40px 0;
     text-align: center;
+}
+
+.disNone{
+    display:none;
+}
+
+
+
+
+
+
+
+/********************
+    
+LOGIN CSS
+    
+**********************/
+
+.eventhub-section {
+    background: #fff;
+    padding: 20px;
+}
+
+.chkBox-login {
+    margin:0 !important;
+}
+
+.eventhub-login-logo {
+    padding-left: 37%;
+}
+
+.eventhub-login-logo img {
+    width: 40%;
+}
+
+.text-adjustment-form {
+    padding-bottom: 10px;
+    padding-left: 2px;
+}
+
+.btn-login-custom-primary {
+    color: #fff !important;
+    background-color: #07d9a7 !important;
+    border-color: #07d9a7 !important;
 }
