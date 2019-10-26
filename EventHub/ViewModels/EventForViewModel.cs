@@ -23,11 +23,16 @@ namespace EventHub.ViewModels
         [Required]
         [FutureDate]
         public string Date { get; set; }
-
-
+        
         [Required]
         [ValidTime]
         public string Time { get; set; }
+
+        public string ShortDescription { get; set; }
+
+        public string Description { get; set; }
+
+        public string Image { get; set; }
 
         public string Heading { get; set; }
 

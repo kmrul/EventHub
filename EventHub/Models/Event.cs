@@ -33,6 +33,10 @@ namespace EventHub.Models
         public bool IsCanceled { get; private set; }
 
         public ICollection<Attendance> Attendaces { get; internal set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
+        public string ShortDescription { get; set; }
+        public string Image { get; set; }
 
 
         public Event()

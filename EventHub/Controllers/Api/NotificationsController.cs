@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using EventHub.App_Start;
+﻿using EventHub.App_Start;
 using EventHub.Dtos;
 using EventHub.Models;
 using Microsoft.AspNet.Identity;

@@ -8,7 +8,7 @@ namespace EventHub.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("dbEventHub", throwIfV1Schema: false)
+            : base("dbEventHub")
         {
         }
 

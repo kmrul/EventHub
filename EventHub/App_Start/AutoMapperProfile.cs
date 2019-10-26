@@ -16,5 +16,6 @@ namespace EventHub.App_Start
             CreateMap<Event, EventDto>();
             CreateMap<Notification, NotificationDto>();
         }
+
     }
 }

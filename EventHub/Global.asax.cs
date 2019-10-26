@@ -6,8 +6,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Http;
-using System.Web.Routing;
 using EventHub.App_Start;
+using EventHub.Models;
+using EventHub.Dtos;
 using AutoMapper;
 
 namespace EventHub
@@ -16,9 +17,12 @@ namespace EventHub
     {
         protected void Application_Start()
         {
-            Mapper.Initialize(c => c.AddProfile<AutoMapperProfile>());
+
+            Mapper.Initialize(cfg => cfg.AddProfile<AutoMapperProfile>());
+            
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            AreaRegistration.RegisterAllAreas();
+            //AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
