@@ -34,6 +34,9 @@ namespace EventHub.ViewModels
 
         public string Image { get; set; }
 
+        public string Seat { get; set; }
+        
+
         public string Heading { get; set; }
 
         public string Action {

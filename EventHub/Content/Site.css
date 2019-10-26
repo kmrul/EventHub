@@ -25,7 +25,6 @@
 input,
 select,
 textarea {
-    
 }
 
 
@@ -194,8 +193,8 @@ ul.notifications {
     text-align: center;
 }
 
-.disNone{
-    display:none;
+.disNone {
+    display: none;
 }
 
 
@@ -213,19 +212,20 @@ LOGIN CSS
 .eventhub-section {
     background: #fff;
     padding: 20px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.075);
 }
 
 .chkBox-login {
-    margin:0 !important;
+    margin: 0 !important;
 }
 
 .eventhub-login-logo {
     padding-left: 37%;
 }
 
-.eventhub-login-logo img {
-    width: 40%;
-}
+    .eventhub-login-logo img {
+        width: 40%;
+    }
 
 .text-adjustment-form {
     padding-bottom: 10px;
@@ -236,4 +236,12 @@ LOGIN CSS
     color: #fff !important;
     background-color: #07d9a7 !important;
     border-color: #07d9a7 !important;
+}
+
+
+.event-banner {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #cccccc;
+    margin-bottom: 10px;
 }

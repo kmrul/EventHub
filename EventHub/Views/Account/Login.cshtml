@@ -49,8 +49,9 @@
                         <input type="submit" value="Login" class="btn btn-default pull-right btn-login-custom-primary" />
                     </div>
                 </div>
+                <hr />
                 <p>
-                    @Html.ActionLink("Create an account", "Register", new { @class = "btn " })
+                    <a href="@Url.Action("register","account")" class="btn btn-default text-center">Create an account</a>
                 </p>
             }
         </div>

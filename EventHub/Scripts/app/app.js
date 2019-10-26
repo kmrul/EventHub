@@ -35,3 +35,31 @@ var EventsController = function () {
         };
     };
 }();
+
+
+$(function () {
+    //$('#ImageUpload').change(function () {
+    //    console.log("test action");
+    //    var reader = new FileReader();
+
+    //    reader.onload = function (e) {
+    //        // get loaded data and render thumbnail.
+    //        document.getElementById("eventImage").src = e.target.result;
+    //    };
+
+    //    // read the image file as a data URL.
+    //    reader.readAsDataURL(this.files[0]);
+    //});
+
+    document.getElementById("eventImageUpload").onchange = function () {
+        var reader = new FileReader();
+        console.log("test image action");
+        reader.onload = function (e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("eventImage").src = e.target.result;
+        };
+
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    };
+});

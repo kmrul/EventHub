@@ -17,7 +17,14 @@ namespace EventHub
 
             bundles.Add(new ScriptBundle("~/bundles/lib").Include(
                        "~/Scripts/underscore-min.js",
+                       "~/Scripts/jquery.datetimepicker.js",
+                       "~/Scripts/bootbox.min.js",
                        "~/Scripts/moment.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/lib").Include(
+                "~/Content/bootstrap.min.css",
+                "~/Content/jquery.datetimepicker.min.css"
+                ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -28,8 +35,7 @@ namespace EventHub
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootbox.min.js"
+                      "~/Scripts/bootstrap.min.js"
                       ));
 
             bundles.Add(new StyleBundle("~/plugin/owlcarousel/css").Include(
@@ -43,8 +49,6 @@ namespace EventHub
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/animate.css",
                       "~/Content/site.css"));
         }
     }

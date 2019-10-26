@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Web;
 
 namespace EventHub.Models
 {
@@ -32,12 +35,29 @@ namespace EventHub.Models
 
         public bool IsCanceled { get; private set; }
 
+        public string Seat { get; set; }
+        
+
+
         public ICollection<Attendance> Attendaces { get; internal set; }
+        
+        [DisplayName("Price")]
         public decimal Price { get; set; }
+
+        [DisplayName("Description")]
         public string Description { get; set; }
+
+        [DisplayName("Short Description")]
         public string ShortDescription { get; set; }
+
+        [DisplayName("Event Image")]
         public string Image { get; set; }
 
+        [Required]
+        [DataType(DataType.Upload)]
+        [Display(Name = "Choose File")]
+        [NotMapped]
+        public HttpPostedFileBase ImageUpload { get; set; }
 
         public Event()
         {

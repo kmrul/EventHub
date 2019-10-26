@@ -7,13 +7,13 @@ namespace EventHub.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitAgainMigrations : IMigrationMetadata
+    public sealed partial class AddSeatCreated : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitAgainMigrations));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddSeatCreated));
         
         string IMigrationMetadata.Id
         {
-            get { return "201910261443056_InitAgainMigrations"; }
+            get { return "201910262039374_AddSeatCreated"; }
         }
         
         string IMigrationMetadata.Source
